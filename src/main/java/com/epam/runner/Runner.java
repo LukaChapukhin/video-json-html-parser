@@ -25,6 +25,9 @@ public class Runner {
 			idType = args[0];
 			
 			 switch (idType) {
+			 case "none":  
+	            	url.append(ProxyLinks.GET_ALL_VIDEOS);
+	                     break;
 	            case "full":  
 	            	url.append(ProxyLinks.GET_VIDEO_BY_FULL_ID);
 	            	url.append(args[1]);
