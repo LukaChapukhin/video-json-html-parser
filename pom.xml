@@ -91,7 +91,6 @@
   </executions>
   <configuration>
     <mainClass>com.epam.runner.Runner</mainClass>
-    
   </configuration>
 </plugin>
 		</plugins>

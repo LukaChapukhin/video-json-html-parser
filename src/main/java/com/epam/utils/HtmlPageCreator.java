@@ -1,7 +1,9 @@
 package com.epam.utils;
 
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ import freemarker.template.TemplateException;
 
 public class HtmlPageCreator {
 
+	private static final String PATH_TO_HTML= "src/main/resources/NewFile.html";
+	
 	public static void createHtmlTemplate(AbstractChannel channel, String pathToTemplate) throws TechnicalException {
 		
 		if(channel==null){
@@ -32,7 +36,7 @@ public class HtmlPageCreator {
 		try {
 		
 			Template template = cfg.getTemplate(pathToTemplate);
-			Writer out = new OutputStreamWriter(System.out);
+			Writer out = new OutputStreamWriter(new FileOutputStream(PATH_TO_HTML));
 			Map<String, Object> data = new HashMap<String, Object>();
 
 			data.put("title", channel.getTitle());
