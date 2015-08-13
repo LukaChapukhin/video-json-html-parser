@@ -7,6 +7,7 @@ public class JsonSchema {
 	public static final String CONTENT = "content";
 	public static final String SCHEME = "scheme";
 	public static final String ITEM = "item";
+	public static final String ITEMS = "items";
 	public static final String DESCRIPTION = "description";
 	public static final String TITLE = "title";
 	public static final String URL = "url";
