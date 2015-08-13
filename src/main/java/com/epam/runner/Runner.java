@@ -27,15 +27,17 @@ public class Runner {
 			 switch (idType) {
 	            case "full":  
 	            	url.append(ProxyLinks.GET_VIDEO_BY_FULL_ID);
+	            	url.append(args[1]);
 	                     break;
 	            case "short":  
 	            	url.append(ProxyLinks.GET_VIDEO_BY_SHORT_ID);
+	            	url.append(args[1]);
 	                     break;
 	            default: 
 	            	url.append(ProxyLinks.GET_ALL_VIDEOS);
 	                     break;
 	        }
-			 
+			 System.out.println(url); 
 		}
 		AbstractChannel channel = null;
 		String content = null;
