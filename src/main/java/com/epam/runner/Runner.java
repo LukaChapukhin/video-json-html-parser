@@ -16,29 +16,44 @@ public class Runner {
 
 	public static void main(String[] args) {
 		
-		String url = null;
-		if (args.length == 0) {
-			url = ProxyLinks.GET_ALL_VIDEOS;
+		StringBuilder url = new StringBuilder();
+		String idType = null;
+		if (args.length < 2) {
+			url.append(ProxyLinks.GET_ALL_VIDEOS);
 		} else {
-			url = args[0];
+			
+			idType = args[0];
+			
+			 switch (idType) {
+	            case "full":  
+	            	url.append(ProxyLinks.GET_VIDEO_BY_FULL_ID);
+	                     break;
+	            case "short":  
+	            	url.append(ProxyLinks.GET_VIDEO_BY_SHORT_ID);
+	                     break;
+	            default: 
+	            	url.append(ProxyLinks.GET_ALL_VIDEOS);
+	                     break;
+	        }
+			 
 		}
 		AbstractChannel channel = null;
 		String content = null;
 		try {
-			content = HttpContentReciever.getInstance().recieveContent(url);
+			content = HttpContentReciever.getInstance().recieveContent(url.toString());
 			channel = JsonConverter.parseJsonToMultiObject(content);
 		} catch (JsonSyntaxException e) {
 			try {
 				channel = JsonConverter.parseJsonToSingleObject(content);
-			} catch (UrlFormatException e1) {
+			} catch (UrlFormatException|JsonSyntaxException e1) {
 
-				e1.printStackTrace();
+				System.out.println("Invalid parameter!");
 				System.exit(1);
 
 			}
 
 		} catch (UrlFormatException e) {
-			e.printStackTrace();
+			System.out.println("Invalid parameter!");
 			System.exit(1);
 		}
 
